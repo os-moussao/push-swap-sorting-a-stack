@@ -12,39 +12,41 @@
 
 #include "push_swap.h"
 
-void	rotate(t_node *stack)
+void	rotate(t_stack *stack, char *str)
 {
-	while (stack->next)
-	{
-		ft_swap(&(stack->data), &(stack->next->data));
-		stack = stack->next;
-	}
+	t_node	*tmp;
+
+	tmp = stack->top->next;
+	stack->top->next->prev = NULL;
+	stack->top->next = NULL;
+	stack->top->prev = stack->bottom;
+	stack->bottom->next = stack->top;
+	stack->bottom = stack->top;
+	stack->top = tmp;
+	if (str)
+		ft_putstr(str);
+	// while (stack->next)
+	// {
+	// 	ft_swap(&(stack->data), &(stack->next->data));
+	// 	stack = stack->next;
+	// }
 }
 
-void	rrotate(t_node *stack)
+void	rrotate(t_stack *stack, char *str)
 {
-	if (!(stack->next))
-		return ;
-	rrotate(stack->next);
-	ft_swap(&(stack->data), &(stack->next->data));
-}
+	t_node	*tmp;
 
-int	bottom(t_node *stack)
-{
-	while (stack->next)
-		stack = stack->next;
-	return (stack->data);
-}
-
-int	stack_len(t_node *stack)
-{
-	int	len;
-
-	len = 0;
-	while (stack)
-	{
-		len++;
-		stack = stack->next;
-	}
-	return (len);
+	tmp = stack->bottom->prev;
+	stack->bottom->prev->next = NULL;
+	stack->bottom->prev = NULL;
+	stack->bottom->next = stack->top;
+	stack->top->prev = stack->bottom;
+	stack->top = stack->bottom;
+	stack->bottom = tmp;
+	if (str)
+		ft_putstr(str);
+	// if (!(stack->next))
+	// 	return ;
+	// rrotate(stack->next);
+	// ft_swap(&(stack->data), &(stack->next->data));
 }

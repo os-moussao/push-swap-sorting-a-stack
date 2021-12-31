@@ -18,10 +18,12 @@ void	ft_putstr(char *str)
 		write(1, str++, 1);
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int nbr)
 {
-	char	c;
+	char		c;
+	long long	n;
 
+	n = (long long)nbr;
 	if (n < 0)
 	{
 		write(1, "-", 1);

@@ -12,3 +12,4 @@ in
 *.in
 tester
 *.sh
+.vscode

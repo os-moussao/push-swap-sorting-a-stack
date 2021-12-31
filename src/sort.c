@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*
 static bool	sorted(t_node *stack)
 {
 	int	x;
@@ -37,7 +38,7 @@ static int find_min(t_node *a)
 	int	i;
 
 	i = 0;
-	min = I_MAX;
+	min = INT_MAX;
 	while (a)
 	{
 		if (a->data <= min)
@@ -58,7 +59,7 @@ static int find_max(t_node *a)
 	int	i;
 
 	i = 0;
-	max = I_MIN;
+	max = INT_MIN;
 	while (a)
 	{
 		if (a->data >= max)
@@ -159,4 +160,4 @@ t_node	*sort_stack(t_node *a)
 		return (a);
 	}
 	return (selection_sort(a, len));
-}
+}*/

@@ -17,7 +17,7 @@ static int	arr_len(char **arr)
 	int	len;
 
 	len = 0;
-	while (*arr++)
+	while (arr[len])
 		len++;
 	return (len);
 }
@@ -32,7 +32,7 @@ static void	clear_arr(char **arr)
 	free(arr);
 }
 
-static int	_atoi(const char *str)
+long long	_strtol(const char *str)
 {
 	long long	res;
 	int			sign;
@@ -43,39 +43,64 @@ static int	_atoi(const char *str)
 	i = (str[0] == '+' || str[0] == '-');
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + str[i++] - '0';
-	res *= sign;
-	if (str[i] || res > I_MAX || res < I_MIN)
-		error();
-	return ((int)res);
+	res *= (long long)sign;
+	if (str[i] || res > INT_MAX || res < INT_MIN)
+		return (LONG_MIN);
+	return (res);
 }
 
-/*
- * need to clear the stack (or the array) when an error occures
- **/
-t_node	*create(char **av, int ac)
+void	append(t_stack *stack, char **arr)
 {
-	t_node	*stack;
-	t_node	*tmp;
-	char	**arr;
-	int		len;
+	int			len;
+	long long	nbr;
+	t_node		*tmp;
 
-	stack = NULL;
+	len = arr_len(arr);
+	stack->len += len /* = arr_len(arr)*/;
+	while (len--)
+	{
+		nbr = _strtol(arr[len]);
+		if (nbr == LONG_MIN)
+		{
+			clear_arr(arr);
+			clear(stack);
+			error();
+		}
+		push(&(stack->top), (int)nbr, NULL);
+		tmp = stack->top->next;
+		while (tmp)
+		{
+			if (tmp->data == stack->top->data)
+			{
+				clear_arr(arr);
+				clear(stack);
+				error();
+			}
+			tmp = tmp->next;
+		}
+	}
+}
+
+t_stack	*create(char **av, int ac)
+{
+	t_stack	*stack;
+	char	**arr;
+
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		error();
+	stack->len = 0;
+	stack->top = NULL;
 	while (ac--)
 	{
 		arr = ft_split(av[ac], ' ');
-		if (!*arr)
-			error();
-		len = arr_len(arr);
-		while (len--)
-			push(&stack, _atoi(arr[len]));
-		clear_arr(arr);
-		tmp = stack->next;
-		while (tmp)
+		if (!arr)
 		{
-			if (tmp->data == stack->data)
-				error();
-			tmp = tmp->next;
+			clear(stack);
+			error();
 		}
+		append(stack, arr);
+		clear_arr(arr);
 	}
 	return (stack);
 }
