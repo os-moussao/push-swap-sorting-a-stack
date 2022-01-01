@@ -91,6 +91,7 @@ t_stack	*create(char **av, int ac)
 		error();
 	stack->len = 0;
 	stack->top = NULL;
+	stack->bottom = NULL;
 	while (ac--)
 	{
 		arr = ft_split(av[ac], ' ');
@@ -102,5 +103,9 @@ t_stack	*create(char **av, int ac)
 		append(stack, arr);
 		clear_arr(arr);
 	}
+	stack->bottom = stack->top;
+	if (stack->len > 1)
+		while (stack->bottom->next)
+			stack->bottom = stack->bottom->next;
 	return (stack);
 }

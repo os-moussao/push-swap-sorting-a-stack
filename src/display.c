@@ -35,7 +35,7 @@ void	ft_putnbr(int nbr)
 	write(1, &c, 1);
 }
 
-void	disp(t_node *stack, char name)
+void	disp(t_node *stack, char *name)
 {
 	while (stack)
 	{
@@ -44,6 +44,19 @@ void	disp(t_node *stack, char name)
 		stack = stack->next;
 	}
 	write(1, "-\n", 2);
-	write(1, &name, 1);
+	ft_putstr(name);
+	write(1, "\n", 1);
+}
+
+void	revdisp(t_node *bottom, char *name)
+{
+	while (bottom)
+	{
+		ft_putnbr(bottom->data);
+		write(1, "\n", 1);
+		bottom = bottom->prev;
+	}
+	write(1, "-\n", 2);
+	ft_putstr(name);
 	write(1, "\n", 1);
 }

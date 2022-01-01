@@ -36,7 +36,8 @@ typedef struct s_stack
 
 void	ft_swap(int *a, int *b);
 void	error(void);
-void	disp(t_node *stack, char name);
+void	disp(t_node *stack, char *name);
+void	revdisp(t_node *bottom, char *name);
 void	ft_putnbr(int n);
 void	ft_putstr(char *str);
 

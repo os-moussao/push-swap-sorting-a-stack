@@ -45,6 +45,8 @@ int	pop(t_node **head)
 	ret = (*head)->data;
 	to_free = *head;
 	*head = (*head)->next;
+	if (*head)
+		(*head)->prev = NULL;
 	free(to_free);
 	return (ret);
 }

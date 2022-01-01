@@ -18,7 +18,12 @@ int	main(int ac, char **av)
 	t_stack	*a;
 
 	a = create(av + 1, ac - 1);
-	disp(a->top, 'a');
+	disp(a->top, "a");
+
+	ft_putstr("\n\n");
+	revdisp(a->bottom, "a");
+
+	printf("len = %d\n", a->len);
 	//ft_putstr("Begin:\n");
 	//disp(a, 'a');
 	//ft_putstr("\n\n\n");
