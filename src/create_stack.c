@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoussao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 00:16:04 by omoussao          #+#    #+#             */
-/*   Updated: 2021/12/17 17:16:46 by omoussao         ###   ########.fr       */
+/*   Created: 2022/01/02 00:45:17 by omoussao          #+#    #+#             */
+/*   Updated: 2022/01/02 00:52:35 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	append(t_stack *stack, char **arr)
 	t_node		*tmp;
 
 	len = arr_len(arr);
-	stack->len += len /* = arr_len(arr)*/;
 	while (len--)
 	{
 		nbr = _strtol(arr[len]);
@@ -66,7 +65,7 @@ void	append(t_stack *stack, char **arr)
 			clear(stack);
 			error();
 		}
-		push(&(stack->top), (int)nbr, NULL);
+		push(stack, (int)nbr, NULL);
 		tmp = stack->top->next;
 		while (tmp)
 		{
@@ -103,9 +102,5 @@ t_stack	*create(char **av, int ac)
 		append(stack, arr);
 		clear_arr(arr);
 	}
-	stack->bottom = stack->top;
-	if (stack->len > 1)
-		while (stack->bottom->next)
-			stack->bottom = stack->bottom->next;
 	return (stack);
 }

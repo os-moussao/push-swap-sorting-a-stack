@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoussao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 21:53:20 by omoussao          #+#    #+#             */
-/*   Updated: 2021/12/20 21:04:56 by omoussao         ###   ########.fr       */
+/*   Created: 2022/01/02 00:45:46 by omoussao          #+#    #+#             */
+/*   Updated: 2022/01/02 00:45:48 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,16 +141,11 @@ t_node	*selection_sort(t_node *a, int len)
 	return (a);
 }
 
-t_node	*sort_stack(t_node *a)
+t_node	*sort_stack(t_stack *a)
 {
-	int		len;
-
 	// if sorted quit
-	if (sorted(a))
+	if (sorted(a->top))
 		return (a);
-
-	// calc stack len
-	len = stack_len(a);
 
 	// in case if two or three
 	if (len == 2)

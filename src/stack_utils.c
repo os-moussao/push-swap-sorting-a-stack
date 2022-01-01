@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoussao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 19:47:51 by omoussao          #+#    #+#             */
-/*   Updated: 2021/12/14 02:07:39 by omoussao         ###   ########.fr       */
+/*   Created: 2022/01/02 00:46:03 by omoussao          #+#    #+#             */
+/*   Updated: 2022/01/02 00:52:03 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,35 @@ void	swap(t_node *stack, char *str)
 	}
 }
 
-void	push(t_node **stack, int data, char *str)
+void	push(t_stack *stack, int data, char *str)
 {
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
 	new->data = data;
-	new->next = (*stack);
+	new->next = stack->top;
 	new->prev = NULL;
-	if (*stack)
-		(*stack)->prev = new;
-	(*stack) = new;
+	if (stack->top)
+		stack->top->prev = new;
+	else
+		stack->bottom = new;
+	stack->top = new;
+	(stack->len)++;
 	if (str)
 		ft_putstr(str);
 }
 
-int	pop(t_node **head)
+int	pop(t_stack *stack)
 {
 	t_node	*to_free;
 	int		ret;
 
-	ret = (*head)->data;
-	to_free = *head;
-	*head = (*head)->next;
-	if (*head)
-		(*head)->prev = NULL;
+	ret = stack->top->data;
+	to_free = stack->top;
+	stack->top = stack->top->next;
+	if (stack->top)
+		stack->top->prev = NULL;
+	(stack->len)--;
 	free(to_free);
 	return (ret);
 }
@@ -54,6 +58,6 @@ int	pop(t_node **head)
 void	clear(t_stack *stack)
 {
 	while (stack->top)
-		pop(&(stack->top));
+		pop(stack);
 	free(stack);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omoussao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 22:09:37 by omoussao          #+#    #+#             */
-/*   Updated: 2021/12/16 19:13:21 by omoussao         ###   ########.fr       */
+/*   Created: 2022/01/02 00:45:36 by omoussao          #+#    #+#             */
+/*   Updated: 2022/01/02 00:51:03 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	ft_putstr("\n\n");
 	revdisp(a->bottom, "a");
 
-	printf("len = %d\n", a->len);
+	//printf("len = %d\n", a->len);
 	//ft_putstr("Begin:\n");
 	//disp(a, 'a');
 	//ft_putstr("\n\n\n");
