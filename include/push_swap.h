@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 15:57:54 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/02 20:47:31 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	clear(t_stack *stack);
 void	rotate(t_stack *stack, char *str);
 void	rrotate(t_stack *stack, char *str);
 
+t_stack	*div_sort(t_stack *a);
 t_stack	*sort_stack(t_stack *a);
 
 #endif

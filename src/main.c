@@ -6,13 +6,22 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:45:36 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 16:13:21 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/02 16:20:25 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+
+	a = create(av + 1, ac - 1);
+	sort_stack(a);
+	clear(a);
+}
+
+/*
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -32,4 +41,4 @@ int	main(int ac, char **av)
 	revdisp(a->bottom, "a");
 	
 	clear(a);
-}
+}*/

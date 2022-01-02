@@ -26,7 +26,7 @@ LIB_DIR := libft/
 #
 # necessary files
 #
-CFILES := main.c create_stack.c display.c stack_utils.c stack_utils_2.c utils.c sort.c
+CFILES := main.c create_stack.c display.c stack_utils.c stack_utils_2.c utils.c sort.c div_sort.c
 HFILES := $(INCLUDE)push_swap.h
 
 SRC := $(addprefix $(SRC_DIR), $(CFILES))
