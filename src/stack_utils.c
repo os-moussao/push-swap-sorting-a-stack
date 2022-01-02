@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:46:03 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 13:43:44 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/02 15:56:23 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	pop(t_stack *stack)
 
 void	clear(t_stack *stack)
 {
-	while (stack->top)
+	while (stack->len)
 		pop(stack);
 	free(stack);
 }
