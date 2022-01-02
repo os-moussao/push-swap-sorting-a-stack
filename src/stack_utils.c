@@ -6,17 +6,30 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:46:03 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 00:52:03 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/02 13:43:44 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_node *stack, char *str)
+t_stack	*new_stack(void)
 {
-	if (stack->next)
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	stack->top = NULL;
+	stack->bottom = NULL;
+	stack->len = 0;
+	return (stack);
+}
+
+void	swap(t_stack *stack, char *str)
+{
+	if (stack->top->next)
 	{
-		ft_swap(&(stack->data), &(stack->next->data));
+		ft_swap(&(stack->top->data), &(stack->top->next->data));
 		if (str)
 			ft_putstr(str);
 	}

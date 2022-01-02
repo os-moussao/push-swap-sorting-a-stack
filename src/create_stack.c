@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:45:17 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 00:52:35 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/02 13:44:36 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,9 @@ t_stack	*create(char **av, int ac)
 	t_stack	*stack;
 	char	**arr;
 
-	stack = malloc(sizeof(t_stack));
+	stack = new_stack();
 	if (!stack)
 		error();
-	stack->len = 0;
-	stack->top = NULL;
-	stack->bottom = NULL;
 	while (ac--)
 	{
 		arr = ft_split(av[ac], ' ');
