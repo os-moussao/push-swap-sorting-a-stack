@@ -122,8 +122,6 @@ t_stack	*selection_sort(t_stack *a)
 	return (a);
 }
 
-
-
 t_stack	*sort_stack(t_stack *a)
 {
 	if (sorted(a->top))
@@ -135,6 +133,7 @@ t_stack	*sort_stack(t_stack *a)
 			swap(a, "sa\n");
 		return (a);
 	}
-	//div_sort(a);
-	return (selection_sort(a));
+	else if (a->len <= 30)
+		return (selection_sort(a));
+	return (div_sort(a));
 }
