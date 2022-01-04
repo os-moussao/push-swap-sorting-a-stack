@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/03 18:50:47 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:59:38 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	rrotate(t_stack *stack, char *str);
 
 int		select_max(t_node *a);
 t_stack	*selection_sort(t_stack *a);
-t_stack	*div_sort(t_stack *a);
+t_stack	*div_sort(t_stack *a, int div);
 t_stack	*sort_stack(t_stack *a);
 
 #endif

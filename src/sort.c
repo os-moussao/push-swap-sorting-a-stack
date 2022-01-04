@@ -135,5 +135,7 @@ t_stack	*sort_stack(t_stack *a)
 	}
 	else if (a->len <= 30)
 		return (selection_sort(a));
-	return (div_sort(a));
+	else if (a->len <= 150)
+		return (div_sort(a, 5));
+	return (div_sort(a, 10));
 }

@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:35:41 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/03 18:56:58 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/04 13:59:51y omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	move_chunk(t_stack *a, t_stack *b, int val)
 	}
 }
 
-t_stack	*div_sort(t_stack *a)
+t_stack	*div_sort(t_stack *a, int div)
 {
 	t_stack	*b;
     int 	*tab;
@@ -111,20 +111,17 @@ t_stack	*div_sort(t_stack *a)
 	b = new_stack();
     tab = get_tab(a);
 	len = a->len;
-	index = len / 5;
+	index = len / div;
 	while (index < len)
 	{
 		move_chunk(a, b, tab[index - 1]);
-		index += len / 5;
+		index += len / div;
 	}
-	if (a->len > 3)
-		selection_sort(a);
-	else
-		sort_stack(a);
+	selection_sort(a);
 	while (b->len)
 	{
 		max_i = select_max(b->top);
-		if (max_i >= b->len / 2)
+		if (max_i <= (b->len / 2))
 		{
 			while (max_i--)
 				rotate(b, "rb\n");
@@ -138,7 +135,5 @@ t_stack	*div_sort(t_stack *a)
 			push(a, pop(b), "pa\n");
 		}
 	}
-	//disp(a->top, "a");
-	//disp(b->top, "b");
     return (a);
 }
