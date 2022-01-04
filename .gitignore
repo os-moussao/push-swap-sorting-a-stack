@@ -10,7 +10,6 @@ out
 *.out
 in
 *.in
-tester
+*tester*
 *.sh
 .vscode
-push-swap-tester-42
