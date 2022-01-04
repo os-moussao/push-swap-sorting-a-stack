@@ -135,5 +135,6 @@ t_stack	*div_sort(t_stack *a, int div)
 			push(a, pop(b), "pa\n");
 		}
 	}
+	clear(b);
     return (a);
 }
