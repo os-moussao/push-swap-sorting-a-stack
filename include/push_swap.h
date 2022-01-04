@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/04 17:59:38 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/04 23:10:53 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # include <limits.h>
 # include "../libft/libft.h"
 
+# define NA 0
+# define SA 1
+# define SB 2
+# define SS 3
+# define PA 4
+# define PB 5
+# define RA 6
+# define RB 7
+# define RR 8
+# define RRA 9
+# define RRB 10
+# define RRR 11
 
 typedef struct s_node
 {
@@ -40,6 +52,7 @@ void	disp(t_node *stack, char *name);
 void	revdisp(t_node *bottom, char *name);
 void	ft_putnbr(int n);
 void	ft_putstr(char *str);
+char	*get_next_line(int fd);
 
 t_stack	*create(char **av, int ac);
 t_stack	*new_stack(void);
@@ -50,6 +63,7 @@ void	clear(t_stack *stack);
 void	rotate(t_stack *stack, char *str);
 void	rrotate(t_stack *stack, char *str);
 
+bool	sorted(t_node *top);
 int		select_max(t_node *a);
 t_stack	*selection_sort(t_stack *a);
 t_stack	*div_sort(t_stack *a, int div);
