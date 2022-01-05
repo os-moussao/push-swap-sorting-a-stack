@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 19:28:23 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/04 23:11:35 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/05 16:57:59 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,17 @@ int exec(t_stack *a, t_stack *b, int cid)
         return (push(a, pop(b), NULL), 1);
     else if (cid == PB && a->len)
         return (push(b, pop(a), NULL), 1);
-    else if (cid == RA && a->len)
+    else if (cid == RA && a->len >= 2)
         return (rotate(a, NULL), 1);
-    else if (cid == RB && b->len)
+    else if (cid == RB && b->len >= 2)
         return (rotate(b, NULL), 1);
-    else if (cid == RR && a->len && b->len)
+    else if (cid == RR && a->len >= 2 && b->len >= 2)
         return (rr(a, b), 1);
-    else if (cid == RRA && a->len)
+    else if (cid == RRA && a->len >= 2)
         return (rrotate(a, NULL), 1);
-    else if (cid == RRB && b->len)
+    else if (cid == RRB && b->len >= 2)
         return (rrotate(b, NULL), 1);
-    else if (cid == RRR && a->len && b->len)
+    else if (cid == RRR && a->len >= 2 && b->len >= 2)
         return (rrr(a, b), 1);
     return (0);
 }
