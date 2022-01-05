@@ -30,8 +30,10 @@ CFILES := main.c create_stack.c display.c stack_utils.c stack_utils_2.c utils.c 
 HFILES := $(INCLUDE)push_swap.h
 
 SRC := $(addprefix $(SRC_DIR), $(CFILES))
+C_SRC := $(addprefix $(SRC_DIR), checker.c create_stack.c display.c stack_utils.c stack_utils_2.c sort.c div_sort.c utils.c get_next_line.c)
 
 OBJ := $(SRC:.c=.o)
+C_OBJ := $(C_SRC:.c=.o)
 
 LIB := libft/libft.a
 
@@ -45,6 +47,9 @@ all: $(NAME)
 $(NAME): $(OBJ) $(LIB)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIB_DIR) -l$(FT)
 
+checker: $(C_OBJ) $(LIB)
+	$(CC) $(CFLAGS) -o $@ $(C_OBJ) -L$(LIB_DIR) -l$(FT)
+
 $(LIB):
 	make -C $(LIB_DIR) bonus
 	make -C $(LIB_DIR) clean
@@ -53,10 +58,10 @@ $(LIB):
 	$(CC) $(CFLAGS) -c $< -I$(INCLUDE) -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(C_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) checker
 	make -C $(LIB_DIR) fclean
 
 re: fclean all
