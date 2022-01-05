@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/05 18:42:34 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:58:05 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ typedef struct s_stack
 
 void	ft_swap(int *a, int *b);
 void	error(void);
-void	disp(t_node *stack, char *name);
-void	revdisp(t_node *bottom, char *name);
-void	ft_putnbr(int n);
 void	ft_putstr(char *str);
 char	*get_next_line(int fd);
 
