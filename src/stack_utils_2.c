@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:45:54 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 00:45:56 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:42:12 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void	rotate(t_stack *stack, char *str)
 	stack->top = tmp;
 	if (str)
 		ft_putstr(str);
-	// while (stack->next)
-	// {
-	// 	ft_swap(&(stack->data), &(stack->next->data));
-	// 	stack = stack->next;
-	// }
 }
 
 void	rrotate(t_stack *stack, char *str)
@@ -45,8 +40,22 @@ void	rrotate(t_stack *stack, char *str)
 	stack->bottom = tmp;
 	if (str)
 		ft_putstr(str);
-	// if (!(stack->next))
-	// 	return ;
-	// rrotate(stack->next);
-	// ft_swap(&(stack->data), &(stack->next->data));
+}
+
+void    ss(t_stack *a, t_stack *b)
+{
+    swap(a, NULL);
+    swap(b, NULL);
+}
+
+void    rr(t_stack *a, t_stack *b)
+{
+    rotate(a, NULL);
+    rotate(b, NULL);
+}
+
+void    rrr(t_stack *a, t_stack *b)
+{
+    rrotate(a, NULL);
+    rrotate(b, NULL);
 }
