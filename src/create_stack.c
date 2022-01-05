@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:45:17 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 13:44:36 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:53:43 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	arr_len(char **arr)
 
 static void	clear_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -49,7 +49,7 @@ long long	_strtol(const char *str)
 	return (res);
 }
 
-void	append(t_stack *stack, char **arr)
+bool	append(t_stack *stack, char **arr)
 {
 	int			len;
 	long long	nbr;
@@ -60,24 +60,17 @@ void	append(t_stack *stack, char **arr)
 	{
 		nbr = _strtol(arr[len]);
 		if (nbr == LONG_MIN)
-		{
-			clear_arr(arr);
-			clear(stack);
-			error();
-		}
+			return (0);
 		push(stack, (int)nbr, NULL);
 		tmp = stack->top->next;
 		while (tmp)
 		{
 			if (tmp->data == stack->top->data)
-			{
-				clear_arr(arr);
-				clear(stack);
-				error();
-			}
+				return (0);
 			tmp = tmp->next;
 		}
 	}
+	return (1);
 }
 
 t_stack	*create(char **av, int ac)
@@ -96,7 +89,12 @@ t_stack	*create(char **av, int ac)
 			clear(stack);
 			error();
 		}
-		append(stack, arr);
+		if (!append(stack, arr))
+		{
+			clear_arr(arr);
+			clear(stack);
+			error();
+		}
 		clear_arr(arr);
 	}
 	return (stack);
