@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/04 23:10:53 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/05 16:43:47 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define RRA 9
 # define RRB 10
 # define RRR 11
+
+# define BUFFER_SIZE 100000
 
 typedef struct s_node
 {
