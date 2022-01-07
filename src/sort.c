@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 00:45:46 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/02 15:41:23y omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:17:34 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	sorted(t_node *top)
 	return (true);
 }
 
-int select_min(t_node *a)
+int	select_min(t_node *a)
 {
 	int	min;
 	int	min_i;
@@ -51,7 +51,7 @@ int select_min(t_node *a)
 	return (min_i);
 }
 
-int select_max(t_node *a)
+int	select_max(t_node *a)
 {
 	int	max;
 	int	max_i;
@@ -72,25 +72,6 @@ int select_max(t_node *a)
 	return (max_i);
 }
 
-t_stack	*min_up(t_stack *a)
-{
-	int	min;
-
-	min = select_min(a->top);
-	if (min < (a->len + 1) / 2)
-	{
-		while (min--)
-			rotate(a, "ra\n");
-	}
-	else
-	{
-		min = a->len - min;
-		while (min--)
-			rrotate(a, "rra\n");
-	}
-	return (a);
-}
-
 t_stack	*sort_three(t_stack *a)
 {
 	int	max;
@@ -108,34 +89,20 @@ t_stack	*sort_three(t_stack *a)
 t_stack	*selection_sort(t_stack *a)
 {
 	t_stack	*b;
+	int		min_i;
 
 	b = new_stack();
 	while (a->len > 3)
 	{
-		min_up(a);
-		push(b, pop(a), "pb\n");
+		min_i = select_min(a->top);
+		if (min_i <= a->len / 2)
+			move_elem(a, b, min_i, PUSH_B | MV_UP);
+		else
+			move_elem(a, b, a->len - min_i, PUSH_B | MV_DOWN);
 	}
 	sort_three(a);
 	while (b->len)
 		push(a, pop(b), "pa\n");
 	clear(b);
 	return (a);
-}
-
-t_stack	*sort_stack(t_stack *a)
-{
-	if (sorted(a->top))
-		return (a);
-
-	if (a->len == 2)
-	{
-		if (a->top->data > a->top->next->data)
-			swap(a, "sa\n");
-		return (a);
-	}
-	else if (a->len <= 30)
-		return (selection_sort(a));
-	else if (a->len <= 150)
-		return (div_sort(a, 5));
-	return (div_sort(a, 13));
 }
