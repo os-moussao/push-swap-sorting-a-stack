@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/07 13:03:23 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:29:08 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ void	swap(t_stack *stack, char *str);
 void	clear(t_stack *stack);
 void	rotate(t_stack *stack, char *str);
 void	rrotate(t_stack *stack, char *str);
-void    ss(t_stack *a, t_stack *b);
-void    rr(t_stack *a, t_stack *b);
-void    rrr(t_stack *a, t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 bool	sorted(t_node *top);
 int		select_max(t_node *a);
+void	move_elem(t_stack *a, t_stack *b, int i, int mode);
 t_stack	*selection_sort(t_stack *a);
 t_stack	*div_sort(t_stack *a, int div);
 t_stack	*sort_stack(t_stack *a);
