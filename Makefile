@@ -30,10 +30,10 @@ CFILES := main.c create_stack.c stack_utils.c stack_utils_2.c utils.c sort.c div
 HFILES := $(INCLUDE)push_swap.h
 
 SRC := $(addprefix $(SRC_DIR), $(CFILES))
-C_SRC := $(addprefix $(SRC_DIR), checker.c create_stack.c stack_utils.c stack_utils_2.c sort.c div_sort.c utils.c get_next_line.c)
+SRCB := $(addprefix $(SRC_DIR), checker.c create_stack.c stack_utils.c stack_utils_2.c sort.c div_sort.c utils.c get_next_line.c)
 
 OBJ := $(SRC:.c=.o)
-C_OBJ := $(C_SRC:.c=.o)
+OBJB := $(SRCB:.c=.o)
 
 LIB := libft/libft.a
 
@@ -47,8 +47,10 @@ all: $(NAME)
 $(NAME): $(OBJ) $(LIB)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIB_DIR) -l$(FT)
 
-checker: $(C_OBJ) $(LIB)
-	$(CC) $(CFLAGS) -o $@ $(C_OBJ) -L$(LIB_DIR) -l$(FT)
+bonus: checker
+
+checker: $(OBJB) $(LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJB) -L$(LIB_DIR) -l$(FT)
 
 $(LIB):
 	make -C $(LIB_DIR) bonus
