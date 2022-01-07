@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 20:35:41 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/04 13:59:51y omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:21:40 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,43 +60,58 @@ int *get_tab(t_stack *a)
     return (tab);
 }
 
+void	move_elem(t_stack *a, t_stack *b, int i, int mode)
+{
+	if (mode & PUSH_B)
+	{
+		if (mode & MV_UP)
+			while (i--)
+				rotate(a, "ra\n");
+		else if (mode & MV_DOWN)
+			while (i--)
+				rrotate(a, "rra\n");
+		push(b, pop(a), "pb\n");
+	}
+	else if (mode & PUSH_A)
+	{
+		if (mode & MV_UP)
+			while (i--)
+				rotate(b, "rb\n");
+		else if (mode & MV_DOWN)
+			while (i--)
+				rrotate(b, "rrb\n");
+		push(a, pop(b), "pa\n");
+	}
+}
+
 void	move_chunk(t_stack *a, t_stack *b, int val)
 {
 	t_node	*top;
 	t_node	*bott;
+	int		mode;
 	int		i;
 	
+	mode = PUSH_B;
+	i = 0;
 	top = a->top;
 	bott = a->bottom;
-	i = 0;
 	while (top != bott)
 	{
-		if (top->data <= val)
+		if (top->data <= val || bott->data <= val)
 		{
-			while (i--)
-				rotate(a, "ra\n");
-			push(b, pop(a), "pb\n");
+			mode |= (top->data <= val) * MV_UP + (top->data > val) * MV_DOWN;
+			move_elem(a, b, i + !!(mode & MV_DOWN), mode);
+			mode = PUSH_B;
 			i = 0;
 			top = a->top;
 			bott = a->bottom;
+			continue ;
 		}
-		else if (bott->data <= val)
-		{
-			while (i-- > -1)
-				rrotate(a, "rra\n");
-			push(b, pop(a), "pb\n");
-			i = 0;
-			top = a->top;
-			bott = a->bottom;
-		}
-		else
-		{
-			i++;
-			top = top->next;
-			if (top == bott)
-				break ;
-			bott = bott->prev;
-		}
+		i++;
+		top = top->next;
+		if (top == bott)
+			break ;
+		bott = bott->prev;
 	}
 }
 

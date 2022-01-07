@@ -6,7 +6,7 @@
 /*   By: omoussao <omoussao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 21:32:25 by omoussao          #+#    #+#             */
-/*   Updated: 2022/01/05 18:58:05 by omoussao         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:03:23 by omoussao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@
 # define RRA 9
 # define RRB 10
 # define RRR 11
+
+# define PUSH_B		1
+# define PUSH_A		2
+# define MV_UP		4
+# define MV_DOWN	8
 
 # define BUFFER_SIZE 100000
 
