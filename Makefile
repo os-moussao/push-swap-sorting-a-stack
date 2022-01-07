@@ -60,7 +60,7 @@ $(LIB):
 	$(CC) $(CFLAGS) -c $< -I$(INCLUDE) -o $@
 
 clean:
-	$(RM) $(OBJ) $(C_OBJ)
+	$(RM) $(OBJ) $(OBJB)
 
 fclean: clean
 	$(RM) $(NAME) checker
